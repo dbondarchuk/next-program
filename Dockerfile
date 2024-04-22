@@ -1,3 +1,25 @@
+FROM node:lts-alpine as runner
+RUN apk add --no-cache \
+      chromium \
+      nss \
+      freetype \
+      harfbuzz \
+      ca-certificates \
+      ttf-freefont \
+      libxscrnsaver \
+      ffmpeg
+
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+# Add user so we don't need --no-sandbox.
+RUN addgroup -S pptruser && adduser -S -G pptruser pptruser \
+    && mkdir -p /home/pptruser/Downloads /app \
+    && chown -R pptruser:pptruser /home/pptruser \
+    && chown -R pptruser:pptruser /app
+
+# Run everything after as non-privileged user.
+USER pptruser
+
 FROM node:lts-alpine as builder
 
 WORKDIR /app
@@ -19,9 +41,7 @@ RUN rm -rf node_modules && \
   --non-interactive \
   --production=true
 
-FROM jrottenberg/ffmpeg:4.1-alpine AS ffmpeg
-FROM node:lts-alpine
-COPY --from=ffmpeg / /
+FROM runner
 
 WORKDIR /app
 

@@ -20,6 +20,9 @@ export async function generateImage(
       next,
       ...programmeInfo,
     },
+    puppeteerArgs: {
+      args: ["--no-sandbox"],
+    },
   });
 
   return imagePath;
