@@ -4,6 +4,8 @@ export type ChannelConfig = {
   language?: string;
   nextText?: string;
   audioText?: string;
+  translateImage?: boolean;
+  translateAudio?: boolean;
 };
 
 export type GlobalConfig = {

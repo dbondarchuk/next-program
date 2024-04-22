@@ -11,6 +11,7 @@
       "skipFiles": ["<node_internals>/**"],
       "cwd": "${workspaceFolder}",
       "program": "${workspaceFolder}/dist/index.js",
+      "args": [".\\config.yaml"],
       "sourceMaps": true,
       "preLaunchTask": "yarn: build",
       "outFiles": ["${workspaceFolder}/dist/**/*.js"]
