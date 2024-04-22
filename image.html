@@ -1,0 +1,77 @@
+<html>
+  <style>
+    body {
+      width: 900px;
+      height: 250px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      width: 100%;
+    }
+
+    .child {
+      padding: 20px 10px;
+      flex: 1 0;
+      align-self: center;
+      text-align: center;
+      overflow: hidden;
+      /* align-content: center; */
+    }
+
+    .next {
+      background: orange;
+      flex-basis: 30%;
+      transform: skew(-20deg);
+      margin-left: -45px;
+      padding-right: 55px;
+      text-align: center;
+    }
+
+    .next > h2 {
+      transform: skew(20deg);
+      font-size: 6vh;
+      font-weight: 500;
+      color: white;
+    }
+
+    .show {
+      transform: skew(-20deg);
+      background: black;
+      flex-basis: 70%;
+    }
+
+    h1 {
+      transform: skew(20deg);
+      font-size: 8vh;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+    }
+
+    h3 {
+      transform: skew(20deg);
+      font-size: 4vh;
+      font-weight: 400;
+      color: white;
+      text-align: center;
+    }
+  </style>
+
+  <!-- <body style="width: {{width}}px; height: {{height}}px;"> -->
+  <body>
+    <div class="container">
+      <div class="child next">
+        <h2>{{next}}:</h2>
+      </div>
+      <div class="child show">
+        <h1>{{showName}}</h1>
+        <h3>{{episodeNum}}: {{episodeName}}</h3>
+      </div>
+    </div>
+  </body>
+</html>
